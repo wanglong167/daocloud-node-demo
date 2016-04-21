@@ -1,11 +1,8 @@
-FROM node:5.10.1
+FROM node:slim
 
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
-COPY package.json /usr/src/app/
+WORKDIR /helloworld
+ADD package.json /helloworld/
 RUN npm install
-COPY . /usr/src/app
+ADD . /helloworld
 
-EXPOSE 80
-
-ENTRYPOINT node server.js
+CMD ["node", "app.js"]
